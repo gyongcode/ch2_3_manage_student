@@ -33,8 +33,16 @@ public class Student {
     return activated;
   }
 
-  public void setActivateTrue() {
+  public void activate(){
+    if(this.activated)
+      throw new IllegalArgumentException();
     this.activated = true;
+  }
+
+  public void deactivate(){
+    if(!this.activated)
+      throw new IllegalArgumentException();
+    this.activated = false;
   }
 
   public void setActivateFalse() {

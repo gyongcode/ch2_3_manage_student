@@ -25,27 +25,13 @@ public class StudentService {
 
   public void activateStudent(String name) {
     // TODO: 과제 구현 부분
-    Optional<Student> optional = studentRepository.findByName(name);
-
-    if (optional.isPresent()) {
-      Student student = optional.get();
-      if (!student.isActivate()) {
-        student.setActivateTrue();
-        studentRepository.save(student);
-      }
-    }
+    Student student = getStudent(name);
+    student.activate();
   }
 
   public void deactivateStudent(String name) {
     // TODO: 과제 구현 부분
-    Optional<Student> optional = studentRepository.findByName(name);
-
-    if (optional.isPresent()) {
-      Student student = optional.get();
-      if (student.isActivate()) {
-        student.setActivateFalse();
-        studentRepository.save(student);
-      }
-    }
+    Student student = getStudent(name);
+    student.deactivate();
   }
 }
